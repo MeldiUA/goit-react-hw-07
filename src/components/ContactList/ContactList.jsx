@@ -7,6 +7,7 @@ import {
   selectVisibleContacts,
 } from '../../redux/contactsSlice';
 import Loader from '../loader/Loader';
+import Error from '../error/Error';
 
 export default function ContactList() {
   const contacts = useSelector(selectVisibleContacts);
@@ -16,7 +17,7 @@ export default function ContactList() {
   return (
     <div>
       {loading && <Loader />}
-      {error && <h2>Ooops something was wrang. Please reload.</h2>}
+      {error && <Error />}
       {!loading && !error && contacts.length > 0 ? (
         <ul className={css.contactsList}>
           {contacts.map(contact => (
